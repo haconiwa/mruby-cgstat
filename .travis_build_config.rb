@@ -3,4 +3,5 @@ MRuby::Build.new do |conf|
   conf.gembox 'default'
   conf.gem '../mruby-cgstat'
   conf.enable_test
+  conf.enable_debug
 end
