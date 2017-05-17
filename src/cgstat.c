@@ -6,9 +6,9 @@
 ** See Copyright Notice in LICENSE
 */
 
-#include "mruby.h"
-#include "mruby/data.h"
 #include "mrb_cgstat.h"
+#include <mruby.h>
+#include <mruby/data.h>
 
 #define DONE mrb_gc_arena_restore(mrb, 0);
 
@@ -18,7 +18,7 @@ typedef struct {
 } mrb_cgstat_data;
 
 static const struct mrb_data_type mrb_cgstat_data_type = {
-  "mrb_cgstat_data", mrb_free,
+    "mrb_cgstat_data", mrb_free,
 };
 
 static mrb_value mrb_cgstat_init(mrb_state *mrb, mrb_value self)
@@ -57,15 +57,14 @@ static mrb_value mrb_cgstat_hi(mrb_state *mrb, mrb_value self)
 
 void mrb_mruby_cgstat_gem_init(mrb_state *mrb)
 {
-    struct RClass *cgstat;
-    cgstat = mrb_define_class(mrb, "CGStat", mrb->object_class);
-    mrb_define_method(mrb, cgstat, "initialize", mrb_cgstat_init, MRB_ARGS_REQ(1));
-    mrb_define_method(mrb, cgstat, "hello", mrb_cgstat_hello, MRB_ARGS_NONE());
-    mrb_define_class_method(mrb, cgstat, "hi", mrb_cgstat_hi, MRB_ARGS_NONE());
-    DONE;
+  struct RClass *cgstat;
+  cgstat = mrb_define_class(mrb, "CGStat", mrb->object_class);
+  /* mrb_define_method(mrb, cgstat, "initialize", mrb_cgstat_init, MRB_ARGS_REQ(1)); */
+  mrb_define_method(mrb, cgstat, "hello", mrb_cgstat_hello, MRB_ARGS_NONE());
+  mrb_define_class_method(mrb, cgstat, "hi", mrb_cgstat_hi, MRB_ARGS_NONE());
+  DONE;
 }
 
 void mrb_mruby_cgstat_gem_final(mrb_state *mrb)
 {
 }
-
