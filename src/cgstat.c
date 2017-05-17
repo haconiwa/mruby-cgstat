@@ -7,6 +7,8 @@
 */
 
 #include "mrb_cgstat.h"
+#include <limits.h>
+#include <unistd.h>
 
 #define DONE mrb_gc_arena_restore(mrb, 0);
 
@@ -54,6 +56,12 @@ static mrb_value mrb_cgstat_hi(mrb_state *mrb, mrb_value self)
   return mrb_str_new_cstr(mrb, "hi!!");
 }
 
+static mrb_value mrb_cgstat_const_hz(mrb_state *mrb, mrb_value self)
+{
+  int hz = (int)sysconf(_SC_CLK_TCK);
+  return mrb_fixnum_value(hz);
+}
+
 void mrb_mruby_cgstat_gem_init(mrb_state *mrb)
 {
   struct RClass *cgstat;
@@ -61,6 +69,7 @@ void mrb_mruby_cgstat_gem_init(mrb_state *mrb)
   /* mrb_define_method(mrb, cgstat, "initialize", mrb_cgstat_init, MRB_ARGS_REQ(1)); */
   mrb_define_method(mrb, cgstat, "hello", mrb_cgstat_hello, MRB_ARGS_NONE());
   mrb_define_class_method(mrb, cgstat, "hi", mrb_cgstat_hi, MRB_ARGS_NONE());
+  mrb_define_class_method(mrb, cgstat, "const_hz", mrb_cgstat_const_hz, MRB_ARGS_NONE());
   DONE;
 }
 
