@@ -1,0 +1,6 @@
+name: mruby-cgstat
+description: CGStat class
+author: Uchio Kondo
+website: https://github.com/haconiwa/mruby-cgstat
+protocol: git
+repository: https://github.com/haconiwa/mruby-cgstat.git
