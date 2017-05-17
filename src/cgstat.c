@@ -1,5 +1,5 @@
 /*
-** mrb_cgstat.c - CGStat class
+** cgstat.c - CGStat class
 **
 ** Copyright (c) Uchio Kondo 2017
 **
@@ -7,8 +7,6 @@
 */
 
 #include "mrb_cgstat.h"
-#include <mruby.h>
-#include <mruby/data.h>
 
 #define DONE mrb_gc_arena_restore(mrb, 0);
 
@@ -45,9 +43,10 @@ static mrb_value mrb_cgstat_init(mrb_state *mrb, mrb_value self)
 
 static mrb_value mrb_cgstat_hello(mrb_state *mrb, mrb_value self)
 {
-  mrb_cgstat_data *data = DATA_PTR(self);
+  /* mrb_cgstat_data *data = DATA_PTR(self);
+     return mrb_str_new(mrb, data->str, data->len); */
 
-  return mrb_str_new(mrb, data->str, data->len);
+  return mrb_str_new_cstr(mrb, "hello");
 }
 
 static mrb_value mrb_cgstat_hi(mrb_state *mrb, mrb_value self)
