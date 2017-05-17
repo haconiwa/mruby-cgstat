@@ -4,13 +4,12 @@ compiler:
   - gcc
 env:
   - MRUBY_VERSION=master
-matrix:
-  allow_failures:
-    - env: MRUBY_VERSION=master
+# matrix:
+#   allow_failures:
+#     - env: MRUBY_VERSION=master
 branches:
   only:
     - master
-
 addons:
   apt:
     packages:
@@ -22,3 +21,7 @@ addons:
       - cgroup-lite
 script:
   - rake test
+
+notifications:
+  slack:
+    secure: boat0Xkj1qgwZSN+fLah76nJJ7j7hRV8cw2A2lPLFUZXguAgbG8uQziMIyF0uNitG64dbvnXyupdG/rPP/k49na10dx5mFNOjznzS63XhsRz8WzXJJwBWa688LRXK4wzYKKfzWaPHV4vhY1iZAtiBPSDfOXJUztQOMcBMlBS9LgbF0mYSRxEZ3R853nQh/9sCwx9ZPSab0YJrobUXemHEJa4YJhk/XQT9Nu1wjjyLJn+/iQk3JzjVtgpl5P9Hb17B4fq+GrXSGz9j4w3CXyAUogPBfJpJVx1rWT4zfSlgBOAcJ6e0sG/yL6GKBEBL74vv52E9IIP9wEX3nU8naqw3o8KSG/S48ZAz5SbXdN65WeH1rcj2kdboC2yt70mWbe+77Sm9Oi6wSc8ZWFwJvHnoT9tDy+IdAeqdR1+nZtyb3zJ1wEuLUDgRnUPP5WApVUimi+GhxDIMUGZBKGrNL0MiGO4/5/G1YAaU8oQKJjKVz8N5/8IXNGNKjhSHrSgRvo/dZJRpSV4ZDDadpXgXEWjZa58+nBaN5Z7gxYWPQ/ro1r3XtvaCcXDgZwqFS82WDZE+8I1xH70AjQb+CwGKD/9UkDkzkiWoX/DSzC566WIi1aApRB38NkNFhq7aWdMK5OO8C4F1iJ2MLX2nNeks/7CJ9+AJv5x/P8VnACE+4tz+RE=
